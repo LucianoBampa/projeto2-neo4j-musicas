@@ -14,7 +14,7 @@ O grafo é composto pelas seguintes entidades:
 As interações dos usuários são representadas como relacionamentos com propriedades,
 permitindo capturar padrões de escuta e preferências musicais.
 
-![Modelo do Grafo]grafo_musicas2.png
+[![Modelo do Grafo]grafo_musicas2.png](https://github.com/LucianoBampa/projeto2-neo4j-musicas/blob/main/grafo_musicas2.png)
 
 ## Relacionamentos
 - `Usuario` → `Musica` : **OUVIU**
