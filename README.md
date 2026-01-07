@@ -14,7 +14,7 @@ O grafo é composto pelas seguintes entidades:
 As interações dos usuários são representadas como relacionamentos com propriedades,
 permitindo capturar padrões de escuta e preferências musicais.
 
-![Modelo do Grafo](diagramas/modelo-grafo2.png)
+![Modelo do Grafo]grafo_musicas2.png
 
 ## Relacionamentos
 - `Usuario` → `Musica` : **OUVIU**
