@@ -1,3 +1,20 @@
+## Criando GDS
+LOAD CSV WITH HEADERS
+FROM 'file:///LastFM_ok1.csv'
+AS row
+MERGE (u:Usuario {username: row.Username})
+MERGE (a:Artista {nome: row.Artist})
+MERGE (al:Album {nome: row.Album})
+MERGE (m:Musica {titulo: row.Track})
+
+MERGE (m)-[:DE]->(a)
+MERGE (m)-[:PERTENCE_A]->(al)
+MERGE (u)-[:OUVE {
+  data: row.Date,
+  hora: row.Time
+}]->(m);
+
+
 ## CONSULTAS CYPHER
 
 ## Músicas ouvidas por um usuário
