@@ -1,1 +1,31 @@
+## CONSULTAS CYPHER
+
+## Músicas ouvidas por um usuário
+MATCH (u:Usuario {nome: "Babs_05"})-[:OUVIU]->(m:Musica)
+RETURN DISTINCT m.titulo
+LIMIT 10;
+
+## Músicas de um artista específico
+MATCH (a:Artista {nome: "Isobel Campbell"})-[:CRIOU]->(m:Musica)
+RETURN m.titulo;
+
+## Usuários que ouviram a mesma música
+MATCH (u1:Usuario {nome: "Babs_05"})-[:OUVIU]->(m:Musica)<-[:OUVIU]-(u2:Usuario)
+WHERE u1 <> u2
+RETURN DISTINCT u2.nome
+LIMIT 10;
+
+## Recomendar músicas que usuários similares ouviram
+MATCH (u1:Usuario {nome: "Babs_05"})-[:OUVIU]->(m:Musica)<-[:OUVIU]-(u2:Usuario)
+MATCH (u2)-[:OUVIU]->(rec:Musica)
+WHERE NOT (u1)-[:OUVIU]->(rec)
+RETURN rec.titulo, count(*) AS popularidade
+ORDER BY popularidade DESC
+LIMIT 10;
+
+## Ranking simples (popularidade)
+MATCH (m:Musica)<-[r:OUVIU]-()
+RETURN m.titulo, count(r) AS total_ouvintes
+ORDER BY total_ouvintes DESC
+LIMIT 10;
 
